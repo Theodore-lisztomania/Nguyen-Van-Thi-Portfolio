@@ -1,0 +1,913 @@
+/* RESET & CƠ BẢN */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden; /* Tránh thanh cuộn ngang */
+}
+
+/*HEADER / NAVBAR*/
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 5%;
+  font-size: 30px;
+  position: sticky;
+  top: 0;
+  background-color: rgba(26, 26, 26, 0.95); /* Nền trong suốt nhẹ */
+  backdrop-filter: blur(10px); /* Hiệu ứng blur */
+  z-index: 1000;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3); /* Đổ bóng */
+  transition: all 0.3s ease;
+}
+
+.logo {
+  color: #fff;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05); /* Phóng to nhẹ khi hover */
+}
+
+.logo span {
+  color: #7cb8ff;
+  text-shadow: 0 0 10px rgba(124, 184, 255, 0.3); /* Ánh sáng nhẹ */
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+}
+
+.navbar ul li {
+  margin-left: 2rem;
+  position: relative; /* Cho hiệu ứng underline */
+}
+
+.navbar ul li a {
+  color: #bfbfbf;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+/* Hiệu ứng underline animation */
+.navbar ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #7cb8ff;
+  transition: width 0.3s ease;
+}
+
+.navbar ul li a:hover::after,
+.navbar ul li a.active::after {
+  width: 100%;
+}
+
+.navbar ul li a:hover,
+.navbar ul li a.active {
+  color: #7cb8ff;
+}
+
+/*  HERO SECTION  */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5rem 10%;
+  flex-wrap: wrap;
+  min-height: calc(100vh - 80px);
+  position: relative;
+}
+
+/* Hiệu ứng gradient động ở background */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at 30% 50%,
+    rgba(124, 184, 255, 0.05) 0%,
+    transparent 50%
+  );
+  pointer-events: none;
+}
+
+.hero-text {
+  flex: 1;
+  min-width: 250px;
+  position: relative;
+  z-index: 1;
+  animation: fadeInLeft 0.8s ease-out;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.hero-text .intro {
+  color: #aaa;
+  margin-bottom: 0.5rem;
+  font-size: 50px;
+  animation: fadeIn 1s ease-out 0.2s backwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  animation: fadeIn 1s ease-out 0.4s backwards;
+}
+
+.hero-text h1 span {
+  color: #7cb8ff;
+  background: linear-gradient(90deg, #7cb8ff, #9fd2ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Nút CTA với hiệu ứng nâng cao */
+.btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #7cb8ff, #5a9ee0);
+  color: #000;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(124, 184, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+  left: 100%; /* Hiệu ứng ánh sáng chạy qua */
+}
+
+.btn:hover {
+  background: linear-gradient(135deg, #9fd2ff, #7cb8ff);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(124, 184, 255, 0.5);
+}
+
+.hero-img {
+  animation: fadeInRight 0.8s ease-out;
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.hero-img img {
+  width: 400px;
+  border-radius: 20px;
+  margin-left: 10rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-img img:hover {
+  transform: scale(1.05) rotate(2deg);
+  box-shadow: 0 15px 50px rgba(124, 184, 255, 0.3);
+}
+
+/*  SKILLS SECTION  */
+.skills-page {
+  padding: 5rem 10%;
+  border-top: 1px solid #333;
+}
+
+.skills-page h1 {
+  color: #7cb8ff;
+  margin-bottom: 1rem;
+  font-size: 2.2rem;
+}
+
+.skills-page p {
+  color: #ccc;
+  margin-bottom: 1.5rem;
+  max-width: 700px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.skill-item {
+  background: #222;
+  border-radius: 10px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hiệu ứng gradient border khi hover */
+.skill-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 10px;
+  padding: 2px;
+  background: linear-gradient(135deg, #7cb8ff, #9fd2ff);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.skill-item:hover::before {
+  opacity: 1;
+}
+
+.skill-item:hover {
+  background: #2b2b2b;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(124, 184, 255, 0.2);
+}
+
+.skill-item h3 {
+  color: #7cb8ff;
+  margin-bottom: 0.5rem;
+}
+
+.skill-item span {
+  font-size: 0.9rem;
+  color: #999;
+}
+
+/* Thanh tiến trình kỹ năng */
+.skill-bars-container {
+  margin-top: 3.5rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.skill-bars-title {
+  color: #7cb8ff;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.skill-bar-item {
+  margin-bottom: 1.5rem;
+}
+
+.skill-bar-item .skill-name {
+  color: #ccc;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.progress-bar-track {
+  width: 100%;
+  height: 12px;
+  background-color: #333;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #7cb8ff, #9fd2ff);
+  border-radius: 10px;
+  transition: width 0.8s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hiệu ứng ánh sáng chạy trên thanh tiến trình */
+.progress-bar-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  to {
+    left: 100%;
+  }
+}
+
+/*  PROJECTS SECTION */
+.projects-page {
+  padding: 5rem 10%;
+  border-top: 1px solid #333;
+}
+
+.projects-page h1 {
+  color: #7cb8ff;
+  margin-bottom: 1rem;
+  font-size: 2.2rem;
+}
+
+.projects-page p {
+  color: #ccc;
+  margin-bottom: 1.5rem;
+  max-width: 700px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.project-item {
+  background: #222;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #333;
+}
+
+.project-item:hover {
+  background: #2b2b2b;
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(124, 184, 255, 0.2);
+  border-color: #7cb8ff;
+}
+
+.project-item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.project-item:hover img {
+  transform: scale(1.1); /* Zoom ảnh khi hover */
+}
+
+.project-item .project-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.project-item h3 {
+  color: #7cb8ff;
+  margin-bottom: 0.75rem;
+}
+
+.project-item p {
+  color: #ccc;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.project-tags {
+  margin-bottom: 1.5rem;
+}
+
+.project-tags span {
+  display: inline-block;
+  background-color: #333;
+  color: #e0e0e0;
+  padding: 4px 12px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.project-tags span:hover {
+  background-color: #7cb8ff;
+  color: #1a1a1a;
+  transform: translateY(-2px);
+}
+
+.btn-project {
+  display: inline-block;
+  background: linear-gradient(135deg, #7cb8ff, #5a9ee0);
+  color: #000;
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  text-align: center;
+  align-self: flex-start;
+  box-shadow: 0 4px 10px rgba(124, 184, 255, 0.3);
+}
+
+.btn-project:hover {
+  background: linear-gradient(135deg, #9fd2ff, #7cb8ff);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(124, 184, 255, 0.5);
+}
+
+/* Khung chứng chỉ */
+.certificates-internal {
+  margin-top: 4rem;
+  text-align: center;
+  background-color: #222;
+  padding: 2.5rem;
+  border-radius: 10px;
+  border: 1px solid #333;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  transition: all 0.3s ease;
+}
+
+.certificates-internal:hover {
+  border-color: #7cb8ff;
+  box-shadow: 0 5px 20px rgba(124, 184, 255, 0.15);
+}
+
+.certificates-internal h2 {
+  color: #7cb8ff;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+.certificates-internal p {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*  ABOUT SECTION */
+.about-page {
+  padding: 5rem 10%;
+  border-top: 1px solid #333;
+}
+
+.about-page h1 {
+  color: #7cb8ff;
+  margin-bottom: 1rem;
+  font-size: 2.2rem;
+}
+
+.about-page h2 {
+  color: #7cb8ff;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.about-page .content-left p {
+  color: #ccc;
+  margin-bottom: 1.5rem;
+}
+
+.about-content-wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 50px;
+  margin-bottom: 3rem;
+}
+
+.content-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 0.5rem;
+}
+
+/* Sở thích */
+.content-right .hobbies-section {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.content-right .hobbies-section h1 {
+  color: #7cb8ff;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.hobbies-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hobbies-list li {
+  background-color: #222;
+  color: #e0e0e0;
+  padding: 8px 18px;
+  margin: 5px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 1px solid #333;
+  transition: all 0.3s ease;
+}
+
+.hobbies-list li:hover {
+  background-color: #7cb8ff;
+  color: #1a1a1a;
+  border-color: #7cb8ff;
+  transform: translateY(-3px);
+  cursor: default;
+  box-shadow: 0 4px 10px rgba(124, 184, 255, 0.3);
+}
+
+/* Quote */
+.quote-container {
+  font-style: italic;
+  font-size: 50px;
+  color: #ccc;
+  border-left: 3px solid #7cb8ff;
+  padding-left: 1.5rem;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.quote-container::before {
+  content: '"';
+  position: absolute;
+  top: -20px;
+  left: 0;
+  font-size: 4rem;
+  color: #7cb8ff;
+  opacity: 0.3;
+}
+
+.quote-container blockquote {
+  margin: 0;
+}
+
+/*  PHOTO GALLERY */
+.photos-gallery {
+  padding: 5rem 10%;
+  border-top: 1px solid #333;
+}
+
+.photos-gallery h2 {
+  color: #7cb8ff;
+  margin-bottom: 1rem;
+  font-size: 2.2rem;
+  text-align: center;
+}
+
+.photos-gallery p {
+  color: #ccc;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.5rem;
+  max-width: 700px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.gallery-item {
+  background-color: #222;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Overlay hiệu ứng khi hover */
+.gallery-item::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(124, 184, 255, 0.3),
+    rgba(90, 158, 224, 0.3)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover::after {
+  opacity: 1;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(124, 184, 255, 0.3);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+/* Skill overview boxes */
+.skills-overview {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.skill-box {
+  margin: 1rem;
+  padding: 1.5rem;
+  background: #222;
+  border-radius: 10px;
+  min-width: 150px;
+  transition: all 0.3s ease;
+  border: 1px solid #333;
+}
+
+.skill-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(124, 184, 255, 0.2);
+  border-color: #7cb8ff;
+}
+
+.skill-box h3 {
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.skill-box p {
+  color: #7cb8ff;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/*  CONTACT SECTION  */
+.contact-page {
+  padding: 5rem 10%;
+  border-top: 1px solid #333;
+}
+
+.contact-page h1 {
+  color: #7cb8ff;
+  margin-bottom: 1rem;
+  font-size: 2.2rem;
+  text-align: center;
+}
+
+.contact-page p {
+  color: #ccc;
+  margin-bottom: 1.5rem;
+  max-width: 700px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-form label {
+  margin: 0.5rem 0 0.3rem;
+  color: #ccc;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.8rem;
+  border: 1px solid #333;
+  border-radius: 8px;
+  background-color: #2b2b2b;
+  color: #fff;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #7cb8ff;
+  box-shadow: 0 0 10px rgba(124, 184, 255, 0.3);
+}
+
+/* Social links */
+.social-links-container {
+  text-align: center;
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+}
+
+.social-links-container h3 {
+  color: #e0e0e0;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.social-links a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background-color: #222;
+  border: 1px solid #333;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hiệu ứng ripple khi hover */
+.social-links a::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(124, 184, 255, 0.3);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+.social-links a:hover::before {
+  width: 100px;
+  height: 100px;
+}
+
+.social-links a svg {
+  width: 24px;
+  height: 24px;
+  fill: #bfbfbf;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.social-links a:hover {
+  background-color: #7cb8ff;
+  border-color: #7cb8ff;
+  transform: translateY(-4px) rotate(5deg);
+  box-shadow: 0 6px 15px rgba(124, 184, 255, 0.4);
+}
+
+.social-links a:hover svg {
+  fill: #1a1a1a;
+  transform: scale(1.1);
+}
+
+/*  FOOTER */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  border-top: 1px solid #333;
+  color: #777;
+  font-size: 0.9rem;
+  background-color: rgba(26, 26, 26, 0.8);
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .hero {
+    justify-content: center;
+    text-align: center;
+    padding: 3rem 10%;
+  }
+
+  .hero-img {
+    margin-left: 0;
+    margin-top: 2.5rem;
+  }
+
+  .hero-img img {
+    width: 300px;
+  }
+
+  .about-content-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .content-right {
+    align-items: center;
+    margin-top: 2.5rem;
+  }
+
+  .quote-container {
+    text-align: center;
+    border-left: none;
+    border-top: 3px solid #7cb8ff;
+    padding-left: 0;
+    padding-top: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+
+  .gallery-item img {
+    height: 140px;
+  }
+}
